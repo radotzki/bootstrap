@@ -470,6 +470,28 @@ describe('typeahead tests', function() {
       };
       expect(prepareInvalidDir).toThrow();
     });
+
+    it('should support changing wait-ms', function() {
+        $scope.typeAheadWaitMs = 2;
+        var element = prepareInputEl('<div><input ng-model="result" uib-typeahead="item for item in source | filter:$viewValue" typeahead-wait-ms="typeAheadWaitMs"></div>');
+
+        changeInputValueTo(element, 'b');
+
+        expect(element).toBeClosed();
+
+        $scope.typeAheadWaitMs = 0;
+        $scope.$digest();
+        changeInputValueTo(element, 'bar');
+
+        expect(element).toBeOpenWithActive(1, 0);
+
+        changeInputValueTo(element, '');
+        $scope.typeAheadWaitMs = 2;
+        $scope.$digest();
+        changeInputValueTo(element, 'b');
+
+        expect(element).toBeClosed();
+    });
   });
 
   describe('selecting a match', function() {
