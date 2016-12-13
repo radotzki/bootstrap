@@ -47,6 +47,9 @@ Each of these parts need to be used as attribute directives.
 * `template-url`
   _(Default: `none`)_ -
   You may specify a template for the dropdown menu. Check the demos for an example.
+  
+* `menu direction` -
+  You may add the class "dropdown-menu-right" to uib-dropdown-menu directive in order to place the menu in the right side.
 
 ### Additional settings `uibDropdownConfig`
 
